@@ -7,6 +7,12 @@
 <body>
 		<p>Logged in successfull</p>
 	
-		<p th:text="${userData}"/>
+		<ul class="navbae-nav me-auto mb-2 mb-lg-0">
+		<li class="nav-item"><a class="nav-link active"
+					aria-current="page" th:href="@{/update}">Update Profile</a>
+					
+					<li class="nav-item"><a class="nav-link active"
+					aria-current="page" th:href="@{/homepage}">Logout Here</a>
+		</ul>
 </body>
 </html>

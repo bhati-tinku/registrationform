@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entities.Role;
+import com.example.demo.entities.User;
 import com.example.demo.service.RoleService;
 
 @Controller
@@ -21,7 +22,7 @@ public class RoleController {
 		return "roles";
 	}
 	@PostMapping("/saverole")
-	public ModelAndView saveRole(@ModelAttribute("role") Role role) {
+	public ModelAndView saveRole(@ModelAttribute ("user") User user , @ModelAttribute("role") Role role) {
 		
 		Role rol = roleService.addRole(role);
 		ModelAndView mv = new ModelAndView();

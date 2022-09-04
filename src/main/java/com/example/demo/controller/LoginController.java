@@ -24,7 +24,7 @@ public class LoginController {
 		try {
 			usr = userService.loginUser(user);
 			mv.addObject("userData", usr);
-			mv.setViewName("loggedUser");
+			mv.setViewName("adminloggerpage");
 			
 		} catch (InvalidCredentialsException e) {
 			mv.addObject("errormsg", "Username or Password incorrect");

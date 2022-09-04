@@ -35,7 +35,7 @@ public class User {
 
 	public User(Long userId, String userName, String password, boolean isActivated, Set<Role> roles,
 			UserDetails userDetails) {
-		super();
+		
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
@@ -45,8 +45,8 @@ public class User {
 	}
 
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+		
+		
 	}
 
 	public Long getUserId() {

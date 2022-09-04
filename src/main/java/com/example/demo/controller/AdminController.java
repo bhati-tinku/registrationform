@@ -1,15 +1,19 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entities.User;
 import com.example.demo.entities.UserDetails;
+import com.example.demo.service.UserDetailsService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -17,12 +21,15 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/admin")
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
+	@GetMapping("/homepage")
 	public String showAdminPage(@ModelAttribute("user") User user) {
-		return "admin";
+		return "homepage";
 	}
 	
-	@GetMapping("/update")
+	@RequestMapping("/update")
 	public String showUpdateForm(@ModelAttribute("user") User user , @ModelAttribute("userdetails") UserDetails userdetails) {
 		return "update";
 	}
@@ -54,6 +61,24 @@ public class AdminController {
 		
 		return mv;
 		
+	}
+	
+	@GetMapping("/admin")
+	public String showAdmin(@ModelAttribute ("user") User user) {
+		return "admin";
+	}
+	
+	
+	@GetMapping("/allusers")
+	public ModelAndView getAllUsers(@ModelAttribute ("userdetails") UserDetails userdetails) {
+		
+		ModelAndView mv = new ModelAndView();
+		List<UserDetails> usersList = userDetailsService.getUsersList();
+		mv.setViewName("userslist");
+		mv.addObject("usersList",usersList);
+		
+		
+		return mv;
 	}
 	
 	
